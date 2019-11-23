@@ -1,25 +1,25 @@
 # linear.regression
 
 
-`linear_regression` is an adapted version of `stats::lm` function. It is designed to be widely useful, user friendly, and reliable. It has been fully and seriously tested to ensure stability. In the era of big data, `linear_regression` is the powerful tool to creat possibilities. 
+`linear.regression` is an adapted version of `stats::lm` function. It is designed to be widely useful, user friendly, and reliable. It has been fully and seriously tested to ensure stability. In the era of big data, `linear.regression` is the powerful tool to creat possibilities. 
 
 ## installation
 
-Install `linear_regression` package from github:
+Install `linear.regression` package from github:
 ```
-devtools::install_github("BangyaoZhao/linear_regression")
+devtools::install_github("BangyaoZhao/linear.regression")
 ```
 
 Load package by:
 ```
-library(linear_regression)
+library(linear.regression)
 ```
 
 ## usage
 
 `linear_regression` is the only function the package provides, but it is widely useful.
 
-`linear_regression` allows users to: 
+`linear.regression` allows users to: 
 
 1. Fit linear regression model with or without intercept and obtain the estimated coeficients. 
 2. Obtain estimated y's.
@@ -31,7 +31,7 @@ library(linear_regression)
 
 The details of using the function can be found in the Vignettes. Use the following code to see Vignettes:
 ```
-browseVignettes("linear_regression")
+browseVignettes("linear.regression")
 ```
 
 ## Learning more
