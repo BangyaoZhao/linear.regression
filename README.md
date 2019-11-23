@@ -1,5 +1,9 @@
 # linear.regression
 
+  <!-- badges: start -->
+  [![Travis build status](https://travis-ci.org/BangyaoZhao/linear.regression.svg?branch=master)](https://travis-ci.org/BangyaoZhao/linear.regression)
+  <!-- badges: end -->
+
 
 `linear.regression` is an adapted version of `stats::lm` function. It is designed to be widely useful, user friendly, and reliable. It has been fully and seriously tested to ensure stability. In the era of big data, `linear.regression` is the powerful tool to creat possibilities. 
 
