@@ -4,7 +4,7 @@
   [![Travis build status](https://travis-ci.org/BangyaoZhao/linear.regression.svg?branch=master)](https://travis-ci.org/BangyaoZhao/linear.regression)
   <!-- badges: end -->
   
-    <!-- badges: start -->
+  <!-- badges: start -->
   [![Codecov test coverage](https://codecov.io/gh/BangyaoZhao/linear.regression/branch/master/graph/badge.svg)](https://codecov.io/gh/BangyaoZhao/linear.regression?branch=master)
   <!-- badges: end -->
 
