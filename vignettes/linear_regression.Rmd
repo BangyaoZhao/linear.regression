@@ -120,12 +120,14 @@ linear_regression(mtcars_mpg,mtcars_covariates,variances = T)$variances
 
 Obtain t statistics and p_values
 
+With intercept:
+
 ```{r}
 linear_regression(mtcars_mpg,mtcars_covariates,t_test=T)$t_test
 summary(lm(mtcars_mpg~mtcars_covariates))
 ```
 
-Obtain f statistics and p_values
+With out intercept:
 
 ```{r}
 linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,t_test=T)$t_test
