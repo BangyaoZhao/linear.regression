@@ -13,19 +13,22 @@
 
 ## installation
 
-Install `linear.regression` package from github:
+Install `linear.regression` package with vignettes from github:
 ```
-devtools::install_github("BangyaoZhao/linear.regression")
+devtools::install_github("BangyaoZhao/linear.regression",build_vignettes = T)
 ```
 
 Load package by:
 ```
-library(linear.regression)
+library("linear.regression")
 ```
 
 ## usage
 
 `linear_regression` is the only function the package provides, but it is widely useful.
+```
+help("linear_regression")
+```
 
 `linear.regression` allows users to: 
 

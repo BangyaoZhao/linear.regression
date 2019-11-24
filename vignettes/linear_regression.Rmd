@@ -38,7 +38,7 @@ In statistics, `linear.regression` is a linear approach to modeling the relation
 
 `linear.regression` is now available on github. In order to install a package from GitHub, you will need the `devtools::` package (https://github.com/r-lib/devtools) and either [Rtools](https://cran.r-project.org/bin/windows/Rtools/) (for Windows) or [Xcode](https://developer.apple.com/xcode/) (for Mac). The following is the code for installing the package on Rstudio:
 ```
-devtools::install_github("BangyaoZhao/linear.regression")
+devtools::install_github("BangyaoZhao/linear.regression",build_vignettes = T)
 ```
 ## Loading packages
 `linear regression` can be loaded to R using

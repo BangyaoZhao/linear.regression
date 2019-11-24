@@ -76,7 +76,7 @@ linear_regression = function(y,
   }
 
   #solve the estimated coefficients
-  coefs = solve(t(x) %*% x,t(x) %*% y)
+  coefs = solve(t(x) %*% x, t(x) %*% y)
   coefs = as.matrix(coefs)
 
 
@@ -118,8 +118,10 @@ linear_regression = function(y,
 
   #calculate r_square, sum of squares and their df's
   if (ss == T) {
-    if (intercept) ssy = sum((y - sum(y) / n) ^ 2)
-    else ssy=sum(y^2)
+    if (intercept)
+      ssy = sum((y - sum(y) / n) ^ 2)
+    else
+      ssy = sum(y ^ 2)
     dfy = n - intercept
     sse = sum((y - y_bars) ^ 2)
     dfe = n - q
