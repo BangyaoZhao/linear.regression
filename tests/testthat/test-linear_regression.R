@@ -62,145 +62,146 @@ test_that("linear_regression works", {
   dfe1 = linear_regression(mtcars_mpg, mtcars_covariates, ss = T)$ss$dfe
   res1 = c(dfr1, dfe1, ssr1, sse1)
   res2 = anova(lm(mtcars_mpg ~ mtcars_covariates))
-  res2 = c(res2[[1]],res2[[2]])
+  res2 = c(res2[[1]], res2[[2]])
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  ssr1 = linear_regression(mtcars_mpg,intercept = F ,mtcars_covariates, ss = T)$ss$ssr
-  dfr1 = linear_regression(mtcars_mpg,intercept = F ,mtcars_covariates, ss = T)$ss$dfr
-  sse1 = linear_regression(mtcars_mpg,intercept = F ,mtcars_covariates, ss = T)$ss$sse
-  dfe1 = linear_regression(mtcars_mpg,intercept = F ,mtcars_covariates, ss = T)$ss$dfe
+  ssr1 = linear_regression(mtcars_mpg,
+                           intercept = F ,
+                           mtcars_covariates,
+                           ss = T)$ss$ssr
+  dfr1 = linear_regression(mtcars_mpg,
+                           intercept = F ,
+                           mtcars_covariates,
+                           ss = T)$ss$dfr
+  sse1 = linear_regression(mtcars_mpg,
+                           intercept = F ,
+                           mtcars_covariates,
+                           ss = T)$ss$sse
+  dfe1 = linear_regression(mtcars_mpg,
+                           intercept = F ,
+                           mtcars_covariates,
+                           ss = T)$ss$dfe
   res1 = c(dfr1, dfe1, ssr1, sse1)
-  res2 = anova(lm(mtcars_mpg ~ 0+mtcars_covariates))
-  res2 = c(res2[[1]],res2[[2]])
+  res2 = anova(lm(mtcars_mpg ~ 0 + mtcars_covariates))
+  res2 = c(res2[[1]], res2[[2]])
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-res1=linear_regression(mtcars_mpg,mtcars_covariates,t_test=T)
-res1=res1$t_test$p_values
-res1=as.vector(res1)
-res2=summary(lm(mtcars_mpg~mtcars_covariates))
-res2=res2[["coefficients"]][,4]
-res2=as.vector(res2)
+  res1 = linear_regression(mtcars_mpg, mtcars_covariates, t_test = T)
+  res1 = res1$t_test$p_values
+  res1 = as.vector(res1)
+  res2 = summary(lm(mtcars_mpg ~ mtcars_covariates))
+  res2 = res2[["coefficients"]][, 4]
+  res2 = as.vector(res2)
   expect_equal(res1, res2)
 })
 
 
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,t_test=T)
-  res1=res1$t_test$p_values
-  res1=as.vector(res1)
-  res2=summary(lm(mtcars_mpg~0+mtcars_covariates))
-  res2=res2[["coefficients"]][,4]
-  res2=as.vector(res2)
-  expect_equal(res1, res2)
-})
-
-
-test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,variances = T)
-  res1=res1$variances$v_coefs
-  res1=diag(res1)
-  res1=sqrt(res1)
-  res1=as.vector(res1)
-  res2=summary(lm(mtcars_mpg~mtcars_covariates))
-  res2=res2[["coefficients"]][,2]
-  res2=as.vector(res2)
+  res1 = linear_regression(mtcars_mpg,
+                           mtcars_covariates,
+                           intercept = F,
+                           t_test = T)
+  res1 = res1$t_test$p_values
+  res1 = as.vector(res1)
+  res2 = summary(lm(mtcars_mpg ~ 0 + mtcars_covariates))
+  res2 = res2[["coefficients"]][, 4]
+  res2 = as.vector(res2)
   expect_equal(res1, res2)
 })
 
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,variances = T)
-  res1=res1$variances$v_coefs
-  res1=diag(res1)
-  res1=sqrt(res1)
-  res1=as.vector(res1)
-  res2=summary(lm(mtcars_mpg~0+mtcars_covariates))
-  res2=res2[["coefficients"]][,2]
-  res2=as.vector(res2)
+  res1 = linear_regression(mtcars_mpg, mtcars_covariates, variances = T)
+  res1 = res1$variances$v_coefs
+  res1 = diag(res1)
+  res1 = sqrt(res1)
+  res1 = as.vector(res1)
+  res2 = summary(lm(mtcars_mpg ~ mtcars_covariates))
+  res2 = res2[["coefficients"]][, 2]
+  res2 = as.vector(res2)
+  expect_equal(res1, res2)
+})
+
+
+test_that("linear_regression works", {
+  res1 = linear_regression(mtcars_mpg,
+                           mtcars_covariates,
+                           intercept = F,
+                           variances = T)
+  res1 = res1$variances$v_coefs
+  res1 = diag(res1)
+  res1 = sqrt(res1)
+  res1 = as.vector(res1)
+  res2 = summary(lm(mtcars_mpg ~ 0 + mtcars_covariates))
+  res2 = res2[["coefficients"]][, 2]
+  res2 = as.vector(res2)
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,f_test  = T)
-  res1=c(res1$f_test$f_statistics,res1$f_test$df)
-  res2=summary(lm(mtcars_mpg~mtcars_covariates))
-  res2=c(res2[["fstatistic"]][["value"]],res2[["fstatistic"]][["numdf"]],res2[["fstatistic"]][["dendf"]])
+  res1 = linear_regression(mtcars_mpg, mtcars_covariates, f_test  = T)
+  res1 = c(res1$f_test$f_statistics, res1$f_test$df)
+  res2 = summary(lm(mtcars_mpg ~ mtcars_covariates))
+  res2 = c(res2[["fstatistic"]][["value"]], res2[["fstatistic"]][["numdf"]], res2[["fstatistic"]][["dendf"]])
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,f_test  = T)
-  res1=c(res1$f_test$f_statistics,res1$f_test$df)
-  res2=summary(lm(mtcars_mpg~0+mtcars_covariates))
-  res2=c(res2[["fstatistic"]][["value"]],res2[["fstatistic"]][["numdf"]],res2[["fstatistic"]][["dendf"]])
+  res1 = linear_regression(mtcars_mpg,
+                           mtcars_covariates,
+                           intercept = F,
+                           f_test  = T)
+  res1 = c(res1$f_test$f_statistics, res1$f_test$df)
+  res2 = summary(lm(mtcars_mpg ~ 0 + mtcars_covariates))
+  res2 = c(res2[["fstatistic"]][["value"]], res2[["fstatistic"]][["numdf"]], res2[["fstatistic"]][["dendf"]])
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,hat_matrix = T)
-  res1=res1$hat_matrix
-  res1=diag(res1)
-  res2=lm.influence(lm(mtcars_mpg~mtcars_covariates))
-  res2=res2$hat
+  res1 = linear_regression(mtcars_mpg, mtcars_covariates, hat_matrix = T)
+  res1 = res1$hat_matrix
+  res1 = diag(res1)
+  res2 = lm.influence(lm(mtcars_mpg ~ mtcars_covariates))
+  res2 = res2$hat
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,hat_matrix = T)
-  res1=res1$hat_matrix
-  res1=diag(res1)
-  res2=lm.influence(lm(mtcars_mpg~0+mtcars_covariates))
-  res2=res2$hat
+  res1 = linear_regression(mtcars_mpg,
+                           mtcars_covariates,
+                           intercept = F,
+                           hat_matrix = T)
+  res1 = res1$hat_matrix
+  res1 = diag(res1)
+  res2 = lm.influence(lm(mtcars_mpg ~ 0 + mtcars_covariates))
+  res2 = res2$hat
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,residuals = T)
-  res1=res1$residuals
-  res1=as.vector(res1)
-  res2=lm(mtcars_mpg~mtcars_covariates)
-  res2=res2$residuals
-  res2=as.vector(res2)
+  res1 = linear_regression(mtcars_mpg, mtcars_covariates, residuals = T)
+  res1 = res1$residuals
+  res1 = as.vector(res1)
+  res2 = lm(mtcars_mpg ~ mtcars_covariates)
+  res2 = res2$residuals
+  res2 = as.vector(res2)
   expect_equal(res1, res2)
 })
 
 test_that("linear_regression works", {
-  res1=linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,residuals = T)
-  res1=res1$residuals
-  res1=as.vector(res1)
-  res2=lm(mtcars_mpg~0+mtcars_covariates)
-  res2=res2$residuals
-  res2=as.vector(res2)
+  res1 = linear_regression(mtcars_mpg,
+                           mtcars_covariates,
+                           intercept = F,
+                           residuals = T)
+  res1 = res1$residuals
+  res1 = as.vector(res1)
+  res2 = lm(mtcars_mpg ~ 0 + mtcars_covariates)
+  res2 = res2$residuals
+  res2 = as.vector(res2)
   expect_equal(res1, res2)
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

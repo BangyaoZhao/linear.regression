@@ -8,10 +8,8 @@ vignette: >
 ---
 
 ```{r, include = FALSE}
-knitr::opts_chunk$set(
-  collapse = TRUE,
-  comment = "#>"
-)
+knitr::opts_chunk$set(collapse = TRUE,
+                      comment = "#>")
 ```
 
 ```{r setup}
@@ -19,7 +17,6 @@ library(linear.regression)
 ```
 
 # Introduction
-##
 
 
 In statistics, `linear.regression` is a linear approach to modeling the relationship between a scalar response (or dependent variable) and one or more explanatory variables (or independent variables). `linear.regression` allows users to: 
@@ -54,9 +51,9 @@ Instead of a ~ expression that the `stats::lm()` function uses, `linear.regressi
 Before the example, let's load the `mtcars` data adapted for this package.
 ```{r}
 data("mtcars_mpg")
-mtcars_mpg[1:3,]
+mtcars_mpg[1:3, ]
 data("mtcars_covariates")
-mtcars_covariates[1:3,]
+mtcars_covariates[1:3, ]
 ```
 
 Also, you can see the documentations to know more:
@@ -69,20 +66,20 @@ help(mtcars_covariates)
 Then, fit the regression model by `linear_regression` function
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates)
+linear_regression(mtcars_mpg, mtcars_covariates)
 ```
 
 Let's compare the result with the `stats::lm` function
 
 ```{r}
-lm(mtcars_mpg~mtcars_covariates)
+lm(mtcars_mpg ~ mtcars_covariates)
 ```
 
 Just like `stats::lm` function, the `linear_regression` function has an intercept by default. If the user does not want the intercept, `intercept = F` could be used. 
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,intercept = F)
-lm(mtcars_mpg~0 + mtcars_covariates)
+linear_regression(mtcars_mpg, mtcars_covariates, intercept = F)
+lm(mtcars_mpg ~ 0 + mtcars_covariates)
 ```
 
 ## Obtain estimated y's
@@ -90,8 +87,8 @@ lm(mtcars_mpg~0 + mtcars_covariates)
 In cases where the user want to have estimated y's in the result, `y_bars = T` could be used. 
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,y_bars = T)$y_bars[1:5,]
-lm(mtcars_mpg~mtcars_covariates)$"fitted.values"[1:5]
+linear_regression(mtcars_mpg, mtcars_covariates, y_bars = T)$y_bars[1:5, ]
+lm(mtcars_mpg ~ mtcars_covariates)$"fitted.values"[1:5]
 ```
 
 ## Obtain sum of squares. 
@@ -99,22 +96,25 @@ lm(mtcars_mpg~mtcars_covariates)$"fitted.values"[1:5]
 In statistic analysis, sum of squares ,their degrees of freedom and R_sqare value are very important. If want, the user can set `ss = T`.
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,ss = T)$ss
-res=anova(lm(mtcars_mpg~mtcars_covariates))
-res[1:2,1:2]
+linear_regression(mtcars_mpg, mtcars_covariates, ss = T)$ss
+res = anova(lm(mtcars_mpg ~ mtcars_covariates))
+res[1:2, 1:2]
 ```
 
 An example without intercept
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,ss = T)$ss
-res=anova(lm(mtcars_mpg~0+mtcars_covariates))
-res[1:2,1:2]
+linear_regression(mtcars_mpg,
+                  mtcars_covariates,
+                  intercept = F,
+                  ss = T)$ss
+res = anova(lm(mtcars_mpg ~ 0 + mtcars_covariates))
+res[1:2, 1:2]
 ```
 
 ## Obtain variances of estimators.
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,variances = T)$variances
+linear_regression(mtcars_mpg, mtcars_covariates, variances = T)$variances
 ```
 ## Obtain the t and f statistics and p values.
 
@@ -123,15 +123,18 @@ Obtain t statistics and p_values
 With intercept:
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,t_test=T)$t_test
-summary(lm(mtcars_mpg~mtcars_covariates))
+linear_regression(mtcars_mpg, mtcars_covariates, t_test = T)$t_test
+summary(lm(mtcars_mpg ~ mtcars_covariates))
 ```
 
 With out intercept:
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,t_test=T)$t_test
-summary(lm(mtcars_mpg~0+mtcars_covariates))
+linear_regression(mtcars_mpg,
+                  mtcars_covariates,
+                  intercept = F,
+                  t_test = T)$t_test
+summary(lm(mtcars_mpg ~ 0 + mtcars_covariates))
 ```
 
 Obtain f statistics and p_values
@@ -139,15 +142,18 @@ Obtain f statistics and p_values
 With intercept:
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,f_test=T)$f_test
-anova(lm(mtcars_mpg~mtcars_covariates))
+linear_regression(mtcars_mpg, mtcars_covariates, f_test = T)$f_test
+anova(lm(mtcars_mpg ~ mtcars_covariates))
 ```
 
 Without intercept:
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,intercept = F,f_test=T)$f_test
-anova(lm(mtcars_mpg~0+mtcars_covariates))
+linear_regression(mtcars_mpg,
+                  mtcars_covariates,
+                  intercept = F,
+                  f_test = T)$f_test
+anova(lm(mtcars_mpg ~ 0 + mtcars_covariates))
 ```
 
 ## Obtain the hat matrix. 
@@ -155,13 +161,41 @@ anova(lm(mtcars_mpg~0+mtcars_covariates))
 Simply by setting `hat_matrix=T`
 
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,hat_matrix = T)$hat_matrix[1:3,1:3]
+linear_regression(mtcars_mpg, mtcars_covariates, hat_matrix = T)$hat_matrix[1:3, 1:3]
 ```
 
 ## Obtain residuals.
 
 Simply by setting `residuals=T`
 ```{r}
-linear_regression(mtcars_mpg,mtcars_covariates,residuals = T)$residuals[1:5,]
-lm(mtcars_mpg~mtcars_covariates)$residuals[1:5]
+linear_regression(mtcars_mpg, mtcars_covariates, residuals = T)$residuals[1:5, ]
+lm(mtcars_mpg ~ mtcars_covariates)$residuals[1:5]
 ```
+
+# Efficiency
+
+`linear_regression` is designed in the modern concept of Minimalism, meaning it won't waste computing power on what users didn't request. Therefore, it runs fast than `lm`.
+
+Let's have a look on an example.
+
+```{r}
+compare_result = bench::mark({
+  res1 = linear_regression(mtcars_mpg, mtcars_covariates)$coefs
+  as.vector(res1)
+}, {
+  res2 = lm(mtcars_mpg ~ mtcars_covariates)$coefficients
+  as.vector(res2)
+})
+compare_result = as.numeric(compare_result[[3]])
+ratio = compare_result[2] / compare_result[1]
+cat("linear_regression() is ", ratio, " times as fast as lm()")
+```
+
+
+
+
+
+
+
+
+
