@@ -55,5 +55,6 @@ linear_regression
 }
 \examples{
 linear_regression(c(3,5,6),c(1,2,3))
+linear_regression(mtcars_mpg, mtcars_covariates)
 
 }
